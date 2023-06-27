@@ -1,6 +1,10 @@
-import React from 'react'
+"use client";
 
-const CarCard = () => {
+import { useState } from 'react'
+
+const CarCard = ({car}) => {
+const [, set] = useState();
+
   return (
     <div>
       car
