@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Notiflix from "notiflix";
 
 import { SearchManufactur } from "./";
 
@@ -18,9 +20,30 @@ const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
 
 const SearchBar = () => {
    const [manufacturer, setManufacturer] = useState('');
-    const [model, setModel] = useState('');
+   const [model, setModel] = useState('');
+   const router = useRouter();
 
-   const handleSearch = () => { }
+   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => { 
+      e.preventDefault();
+      if (manufacturer === "" && model === "") {
+         return Notiflix.Notify.failure('Please fill in the searchbar!')
+      }
+      updateSearchParams(model.toLowerCase(), manufacturer.toLowerCase())
+   }
+
+   const updateSearchParams = (model: string, manufacturer: string) => {
+      const searchParams = new URLSearchParams(window.location.search);
+      if (model) {
+         searchParams.set('model',model)
+      } else { searchParams.delete('model') }
+       if (manufacturer) {
+         searchParams.set('manufacturer',manufacturer)
+       } else { searchParams.delete('manufacturer') }
+      
+      const newPathName = `${window.location.pathname}?${searchParams.toString()}`
+
+      router.push(newPathName)
+   }
    
   return (
     <form onSubmit={handleSearch} className="searchbar">
