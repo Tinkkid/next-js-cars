@@ -3,10 +3,10 @@
 import { useState } from "react";
 import Image from "next/image";
 
-import { calculateCarRent } from "@utils";
-import { CarProps } from "@types";
+import { CarProps } from "@/types";
 import CustomBtn from "./CustomBtn";
 import CarDetails from "./CarDetails";
+import { calculateCarRent } from "@/utils";
 
 interface CarCardProps {
   car: CarProps;

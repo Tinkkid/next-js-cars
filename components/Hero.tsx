@@ -4,7 +4,7 @@ import Image from 'next/image';
 import CustomBtn from './CustomBtn';
 
 const Hero = () => {
-const hundleScroll = ()=>{}
+const handleScroll = ()=>{}
 
   return (
     <div className="hero">
@@ -18,7 +18,7 @@ const hundleScroll = ()=>{}
         </p>
         <CustomBtn title="Explore cars"
           containerStyles="bg-primary-blue text-white rounded-full mt-10"
-          hundleClick={hundleScroll} />
+          handleClick={handleScroll} />
       </div>
       <div className="hero__image-container">
         <div className="hero__image">

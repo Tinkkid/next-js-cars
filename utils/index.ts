@@ -1,7 +1,3 @@
-// const axios = require("axios");
-
-// const BASE_URL = "https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla";
-
 export async function fetchCars() {
    const headers = {
      "X-RapidAPI-Key": "bc5bd2753dmshb212c7360002203p1e2824jsn33fb09239678",
