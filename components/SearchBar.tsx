@@ -25,7 +25,7 @@ const SearchBar = () => {
 
    const handleSearch = (e: React.FormEvent<HTMLFormElement>) => { 
       e.preventDefault();
-      if (manufacturer === "" && model === "") {
+      if (manufacturer.trim() === "" && model.trim() === "") {
          return Notiflix.Notify.failure('Please fill in the searchbar!')
       }
       updateSearchParams(model.toLowerCase(), manufacturer.toLowerCase())
@@ -33,9 +33,11 @@ const SearchBar = () => {
 
    const updateSearchParams = (model: string, manufacturer: string) => {
       const searchParams = new URLSearchParams(window.location.search);
+      
       if (model) {
          searchParams.set('model',model)
       } else { searchParams.delete('model') }
+
        if (manufacturer) {
          searchParams.set('manufacturer',manufacturer)
        } else { searchParams.delete('manufacturer') }

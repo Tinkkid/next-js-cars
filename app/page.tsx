@@ -1,9 +1,10 @@
-import { CarCard, CustomFilter, Hero, SearchBar } from "@/components";
+import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from "@/components";
 import { fuels, yearsOfProduction } from "@/constants";
+import { HomeProps } from "@/types";
 import { fetchCars } from "@/utils";
 import Image from "next/image";
 
-export default async function Home({searchParams}) {
+export default async function Home({searchParams}: HomeProps) {
   const allCars = await fetchCars({
     model: searchParams.model || "",
     year:searchParams.year || 2022,
@@ -25,7 +26,7 @@ export default async function Home({searchParams}) {
         </div>
         <div className="home__filters">
           <SearchBar />
-          <div className="home__filters-container">
+          <div className="home__filter-container">
             <CustomFilter title="fuel" options={ fuels} />
             <CustomFilter title="year" options={ yearsOfProduction} />
           </div>
@@ -35,9 +36,12 @@ export default async function Home({searchParams}) {
             <div className="home__cars-wrapper">
               {allCars?.map((car) => (<CarCard car={car} />))}
             </div>
+            <ShowMore
+              pageNumber={(searchParams.limit || 10) / 10}
+              isNext={(searchParams.limit || 10) > allCars.length} />
           </section>
         ) : (
-            <div className="hone__error-container">
+            <div className="home__error-container">
               <h2 className="text-black text-xl font-bold">Sorry, no results</h2>
               <p>{allCars?.message}</p>
             </div>

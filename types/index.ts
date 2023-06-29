@@ -23,6 +23,10 @@ export interface FiltersProps {
   manufacturer: string;
 }
 
+export interface HomeProps {
+  searchParams: FiltersProps;
+}
+
 export interface CarProps {
   city_mpg: number;
   class: string;
@@ -46,4 +50,9 @@ export interface OptionProps {
 export interface CustomFilterProps {
   title: string;
   options: OptionProps[];
+}
+
+export interface ShowMoreProps {
+  pageNumber: number;
+  isNext: boolean;
 }
