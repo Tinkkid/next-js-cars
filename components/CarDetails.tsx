@@ -29,8 +29,8 @@ const CarDetails =({isOpen, closeModal, car}: CarDetailsProps)=>{
            </Transition.Child>
            <div className="fixed inset-0 overflow-y-auto">
              <div className="flex min-h-full items-center justify-center p-4 text-center">
-                     <Transition.Child
-                        as={Fragment}
+               <Transition.Child
+                 as={Fragment}
                  enter="transition-opacity duration-300"
                  enterFrom="opacity-0 scale-95"
                  enterTo="opacity-100 scale-100"
@@ -42,7 +42,7 @@ const CarDetails =({isOpen, closeModal, car}: CarDetailsProps)=>{
                    <button
                      type="button"
                      onClick={closeModal}
-                     className="absolute top-2 right-2 w-fit p-2 z-10 bg-primary-blue-100 rounded-fill"
+                     className="absolute top-2 right-2 w-fit p-2 z-10 bg-primary-blue-100 rounded-full"
                    >
                      <Image
                        src="/close.svg"
@@ -62,7 +62,49 @@ const CarDetails =({isOpen, closeModal, car}: CarDetailsProps)=>{
                          className="object-contain"
                        />
                      </div>
-                   </div>
+                     <div className="flex gap-3">
+                       <div className="flex-1 relative w-full bg-primary-blue-100 h-24 rounded-lg">
+                         <Image
+                           src="/hero.png"
+                           alt="car model"
+                           fill
+                           priority
+                           className="object-contain"
+                         />
+                       </div>
+                       <div className="flex-1 relative w-full bg-primary-blue-100 h-24 rounded-lg">
+                         <Image
+                           src="/hero.png"
+                           alt="car model"
+                           fill
+                           priority
+                           className="object-contain"
+                         />
+                       </div>
+                       <div className="flex-1 relative w-full bg-primary-blue-100 h-24 rounded-lg">
+                         <Image
+                           src="/hero.png"
+                           alt="car model"
+                           fill
+                           priority
+                           className="object-contain"
+                         />
+                       </div>
+                     </div>
+                           </div>
+                           <div className="flex-1 flex- flex-col gap-2">
+                              <h2 className="font-semibold text-xl capitalize">
+                                 {car.make} {car.model}
+                              </h2>
+                              <div className="flex flex-wrap gap-4 mt-3">
+                                 {Object.entries(car).map(([key, value]) => (
+                                    <div key={key} className="flex justify-between gap-5 w-full text-right">
+                                       <h4>{key}</h4>
+                                       <p>{value}</p>
+                                    </div>
+                                 ))}
+                              </div>
+                           </div>
                  </Dialog.Panel>
                </Transition.Child>
              </div>
