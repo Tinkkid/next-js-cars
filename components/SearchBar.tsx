@@ -28,7 +28,9 @@ const SearchBar = () => {
       if (manufacturer.trim() === "" && model.trim() === "") {
          return Notiflix.Notify.failure('Please fill in the searchbar!')
       }
-      updateSearchParams(model.toLowerCase(), manufacturer.toLowerCase())
+      updateSearchParams(model.toLowerCase(), manufacturer.toLowerCase());
+      setManufacturer("");
+      setModel("");
    }
 
    const updateSearchParams = (model: string, manufacturer: string) => {
